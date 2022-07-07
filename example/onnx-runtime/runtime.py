@@ -109,8 +109,10 @@ def detection(session, img, input_width, input_height, thresh):
                 x1, y1, x2, y2 = int(x1 * W), int(y1 * H), int(x2 * W), int(y2 * H)
 
                 pred.append([x1, y1, x2, y2, score, cls_index])
-
-    return nms(np.array(pred))
+    if(len(pred) != 0):
+    	return nms(np.array(pred))
+    else:
+	return pred
 
 if __name__ == '__main__':
     # 读取图片
